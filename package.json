@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"critical",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "critical",
+    "description": "api documentation for [critical (v0.8.4)](https://github.com/addyosmani/critical#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-critical.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-critical) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-critical.svg)](https://travis-ci.org/npmdoc/node-npmdoc-critical)",
     "devDependencies": {
         "critical": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-critical",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-critical",
+    "keywords": [
+        "documentation",
+        "critical"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_critical.js",
+    "name": "npmdoc-critical",
+    "nameAlias": "npmdoc_critical",
+    "nameOriginal": "npmdoc-critical",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-critical.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
