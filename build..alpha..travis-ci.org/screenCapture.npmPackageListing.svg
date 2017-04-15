@@ -1,16 +1,16 @@
 <svg height="206" width="720" xmlns="http://www.w3.org/2000/svg">
 <rect height="206" fill="#555" width="720"></rect>
 <text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
-<tspan x="10" y="26">  0.  2017-04-15 22:36:22 +0000    57911 bytes  .</tspan>
-<tspan x="10" y="42">  1.  2017-04-15 22:36:22 +0000     8499 bytes  CHANGELOG.md</tspan>
-<tspan x="10" y="58">  2.  2017-04-15 22:36:22 +0000    11532 bytes  README.md</tspan>
-<tspan x="10" y="74">  3.  2017-04-15 22:36:22 +0000     5027 bytes  cli.js</tspan>
-<tspan x="10" y="90">  4.  2017-04-15 22:36:22 +0000     5473 bytes  index.js</tspan>
-<tspan x="10" y="106">  5.  2017-04-15 22:36:22 +0000     7782 bytes  lib/core.js</tspan>
-<tspan x="10" y="122">  6.  2017-04-15 22:36:22 +0000    10860 bytes  lib/file-helper.js</tspan>
-<tspan x="10" y="138">  7.  2017-04-15 22:36:22 +0000      907 bytes  lib/gc.js</tspan>
-<tspan x="10" y="154">  8.  2017-04-15 22:36:22 +0000     3226 bytes  lib/inline-styles.js</tspan>
-<tspan x="10" y="170">  9.  2017-04-15 22:36:22 +0000      948 bytes  lib/vinyl-remote.js</tspan>
-<tspan x="10" y="186"> 10.  2017-04-15 22:36:22 +0000     3657 bytes  package.json</tspan>
+<tspan x="10" y="26">  0.  2017-04-15 22:38:06 +0000    57911 bytes  .</tspan>
+<tspan x="10" y="42">  1.  2017-04-15 22:38:06 +0000     8499 bytes  CHANGELOG.md</tspan>
+<tspan x="10" y="58">  2.  2017-04-15 22:38:06 +0000    11532 bytes  README.md</tspan>
+<tspan x="10" y="74">  3.  2017-04-15 22:38:06 +0000     5027 bytes  cli.js</tspan>
+<tspan x="10" y="90">  4.  2017-04-15 22:38:06 +0000     5473 bytes  index.js</tspan>
+<tspan x="10" y="106">  5.  2017-04-15 22:38:06 +0000     7782 bytes  lib/core.js</tspan>
+<tspan x="10" y="122">  6.  2017-04-15 22:38:06 +0000    10860 bytes  lib/file-helper.js</tspan>
+<tspan x="10" y="138">  7.  2017-04-15 22:38:06 +0000      907 bytes  lib/gc.js</tspan>
+<tspan x="10" y="154">  8.  2017-04-15 22:38:06 +0000     3226 bytes  lib/inline-styles.js</tspan>
+<tspan x="10" y="170">  9.  2017-04-15 22:38:06 +0000      948 bytes  lib/vinyl-remote.js</tspan>
+<tspan x="10" y="186"> 10.  2017-04-15 22:38:06 +0000     3657 bytes  package.json</tspan>
 </text>
 </svg>
