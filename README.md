@@ -1,9 +1,14 @@
-# api documentation for  [critical (v0.8.4)](https://github.com/addyosmani/critical#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-critical.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-critical) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-critical.svg)](https://travis-ci.org/npmdoc/node-npmdoc-critical)
+# npmdoc-critical
+
+#### api documentation for  [critical (v0.8.4)](https://github.com/addyosmani/critical#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-critical.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-critical) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-critical.svg)](https://travis-ci.org/npmdoc/node-npmdoc-critical)
+
 #### Extract & Inline Critical-path CSS from HTML
 
 [![NPM](https://nodei.co/npm/critical.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/critical)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-critical/build/screenCapture.buildCi.browser.apidoc.html.png)](https://npmdoc.github.io/node-npmdoc-critical/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-critical/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-critical/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-critical/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-critical/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-critical/build/screenCapture.npmPackageListing.svg)
 
@@ -120,16 +125,6 @@
     }
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module critical](#apidoc.module.critical)
-
-
-
-# <a name="apidoc.module.critical"></a>[module critical](#apidoc.module.critical)
 
 
 
