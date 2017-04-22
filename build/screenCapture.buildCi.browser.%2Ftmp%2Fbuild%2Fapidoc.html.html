@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/addyosmani/critical#readme"
-
-    >critical (v0.8.4)</a>
+    <a href="https://github.com/addyosmani/critical#readme">critical (v0.8.4)</a>
 </h1>
-<h4>Extract & Inline Critical-path CSS from HTML</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<h4>Extract &amp; Inline Critical-path CSS from HTML</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.critical">module critical</a><ol>
 
@@ -451,7 +444,7 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```js
-var critical = require(&#x27;critical&#x27;);
+var critical = require('critical');
 ```
 
 Full blown example with available options:
@@ -464,7 +457,7 @@ critical.<span class="apidocCodeKeywordSpan">generate</span>({
 inline: true,
 
 // Your base directory
-base: &#x27;dist/&#x27;,
+base: 'dist/',
 ...</pre></li>
     </ul>
 
@@ -504,7 +497,7 @@ base: &#x27;dist/&#x27;,
     cb = cb || function () {};
 
     if (!opts.src || !opts.base) {
-        throw new Error(&#x27;A valid source and base path are required.&#x27;);
+        throw new Error('A valid source and base path are required.');
     }
 
     // Inline the critical path CSS
@@ -551,7 +544,7 @@ base: &#x27;dist/&#x27;,
         }
 
         if (file.isStream()) {
-            return this.emit(&#x27;error&#x27;, new PluginError(&#x27;critical&#x27;, &#x27;Streaming not supported&#x27;));
+            return this.emit('error', new PluginError('critical', 'Streaming not supported'));
         }
 
         var options = _.assign(opts || {}, {
@@ -560,12 +553,12 @@ base: &#x27;dist/&#x27;,
 
         exports.generate(options, function (err, data) {
             if (err) {
-                return cb(new PluginError(&#x27;critical&#x27;, err.message));
+                return cb(new PluginError('critical', err.message));
             }
 
             // rename file if not inlined
             if (!opts.inline) {
-                file.path = replaceExtension(file.path, &#x27;.css&#x27;);
+                file.path = replaceExtension(file.path, '.css');
             }
 
             file.contents = new Buffer(data);
@@ -652,8 +645,8 @@ base: &#x27;dist/&#x27;,
     <li>description and source-code<pre class="apidocCodePre">function generate(opts) {
     opts = opts || {};
 
-    if (!opts.src &#x26;&#x26; !opts.html) {
-        return Bluebird.reject(new Error(&#x27;A valid source is required.&#x27;));
+    if (!opts.src &amp;&amp; !opts.html) {
+        return Bluebird.reject(new Error('A valid source is required.'));
     }
 
     if (!opts.dimensions) {
@@ -663,7 +656,7 @@ base: &#x27;dist/&#x27;,
         }];
     }
 
-    debug(&#x27;Start with the following options&#x27;);
+    debug('Start with the following options');
     debug(opts);
 
     return Bluebird.map(opts.dimensions, function (dimensions) {
@@ -676,22 +669,22 @@ base: &#x27;dist/&#x27;,
         criticalCSS = combineCss(criticalCSS);
 
         if (opts.ignore) {
-            debug(&#x27;generate&#x27;, &#x27;Applying filter&#x27;, opts.ignore);
+            debug('generate', 'Applying filter', opts.ignore);
             criticalCSS = filterCss(criticalCSS, opts.ignore, opts.ignoreOptions || {});
         }
 
         if (opts.minify === true) {
-            debug(&#x27;generate&#x27;, &#x27;Minify css&#x27;);
+            debug('generate', 'Minify css');
             criticalCSS = new CleanCSS().minify(criticalCSS).styles;
         }
 
-        debug(&#x27;generate&#x27;, &#x27;Done&#x27;);
+        debug('generate', 'Done');
         return criticalCSS;
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```js
-var critical = require(&#x27;critical&#x27;);
+var critical = require('critical');
 ```
 
 Full blown example with available options:
@@ -704,7 +697,7 @@ critical.<span class="apidocCodeKeywordSpan">generate</span>({
 inline: true,
 
 // Your base directory
-base: &#x27;dist/&#x27;,
+base: 'dist/',
 ...</pre></li>
     </ul>
 
@@ -740,8 +733,8 @@ base: &#x27;dist/&#x27;,
         }
 
         // Oust extracts a list of your stylesheets
-        var stylesheets = oust(htmlfile.contents.toString(), &#x27;stylesheets&#x27;);
-        debug(&#x27;appendStylesheets&#x27;, stylesheets);
+        var stylesheets = oust(htmlfile.contents.toString(), 'stylesheets');
+        debug('appendStylesheets', stylesheets);
         stylesheets = stylesheets.map(file.resourcePath(htmlfile, opts));
         return Bluebird.map(stylesheets, file.<span class="apidocCodeKeywordSpan">assertLocal</span>(opts)).then(function (stylesheets
 ) {
@@ -765,11 +758,11 @@ base: &#x27;dist/&#x27;,
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getPenthouseUrl(opts, file, port) {
-    if (opts.src &#x26;&#x26; isExternal(opts.src)) {
+    if (opts.src &amp;&amp; isExternal(opts.src)) {
         return opts.src;
     }
 
-    return &#x27;http://127.0.0.1:&#x27; + port + &#x27;/&#x27; + normalizePath(path.relative(path.resolve(file.base), file.path));
+    return 'http://127.0.0.1:' + port + '/' + normalizePath(path.relative(path.resolve(file.base), file.path));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
  * @returns {function}
@@ -777,8 +770,8 @@ base: &#x27;dist/&#x27;,
 function computeCritical(dimensions, opts) {
 return function (htmlfile) {
     return startServer(opts).then(function (server) {
-        debug(&#x27;Processing: &#x27; + htmlfile.path + &#x27; [&#x27; + dimensions.width + &#x27;x&#x27; + dimensions.height + &#
-x27;]&#x27;);
+        debug('Processing: ' + htmlfile.path + ' [' + dimensions.width + 'x' + dimensions.height + &amp;#
+x27;]');
         return penthouseAsync({
             url: file.<span class="apidocCodeKeywordSpan">getPenthouseUrl</span>(opts, htmlfile, server.port),
             css: htmlfile.cssPath,
@@ -802,7 +795,7 @@ x27;]&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function getVinylPromise(opts) {
     if (!(opts.src || opts.html) || !opts.base) {
-        return Bluebird.reject(new Error(&#x27;A valid source and base path are required.&#x27;));
+        return Bluebird.reject(new Error('A valid source and base path are required.'));
     }
 
     if (isVinyl(opts.src)) {
@@ -815,7 +808,7 @@ x27;]&#x27;);
         base: opts.base
     });
 
-    if (opts.src &#x26;&#x26; isExternal(opts.src)) {
+    if (opts.src &amp;&amp; isExternal(opts.src)) {
         file.remotePath = opts.src;
     } else if (opts.src) {
         file.path = opts.src;
@@ -823,10 +816,10 @@ x27;]&#x27;);
 
     if (opts.html) {
         var folder = generateSourcePath(opts);
-        debug(&#x27;hacky source path folder&#x27;, folder);
+        debug('hacky source path folder', folder);
 
-        // html passed in directly -&#x3e; create tmp file
-        return tmp.fileAsync({dir: opts.base, postfix: &#x27;.html&#x27;})
+        // html passed in directly -&gt; create tmp file
+        return tmp.fileAsync({dir: opts.base, postfix: '.html'})
             .then(getFirst)
             .then(function (filepath) {
                 file.path = filepath;
@@ -844,7 +837,7 @@ x27;]&#x27;);
     return assertLocal(opts)(opts.src)
         .then(function (data) {
             // src can either be absolute or relative to opts.base
-            if (opts.src !== path.resolve(data) &#x26;&#x26; !isExternal(opts.src)) {
+            if (opts.src !== path.resolve(data) &amp;&amp; !isExternal(opts.src)) {
                 file.path = path.join(opts.base, opts.src);
             } else {
                 file.path = path.relative(process.cwd(), data);
@@ -885,9 +878,9 @@ if (opts.inline) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function guessBasePath(opts) {
-    if (opts.src &#x26;&#x26; !isExternal(opts.src) &#x26;&#x26; !isVinyl(opts.src)) {
+    if (opts.src &amp;&amp; !isExternal(opts.src) &amp;&amp; !isVinyl(opts.src)) {
         return path.dirname(opts.src);
-    } else if (opts.src &#x26;&#x26; isVinyl(opts.src)) {
+    } else if (opts.src &amp;&amp; isVinyl(opts.src)) {
         return opts.src.dirname;
     }
 
@@ -908,7 +901,7 @@ var options = _.defaults(opts, {
     }]
 });
 
-// set dest relative to base if isn&#x27;t specivied absolute
+// set dest relative to base if isn't specivied absolute
 ...</pre></li>
     </ul>
 
@@ -932,7 +925,7 @@ if (data) {
     opts.html = data;
 } else {
     opts.src = cli.input[0];
-    if (opts.src &#x26;&#x26; !file.<span class="apidocCodeKeywordSpan">isExternal</span>(opts.src)) {
+    if (opts.src &amp;&amp; !file.<span class="apidocCodeKeywordSpan">isExternal</span>(opts.src)) {
         opts.src = path.resolve(cli.input[0]);
     }
 }
@@ -955,19 +948,19 @@ try {
     <li>description and source-code<pre class="apidocCodePre">function isVinyl(file) {
     return File.isVinyl(file) ||
         file instanceof File ||
-        (file &#x26;&#x26; /function File\(/.test(file.constructor.toString()) &#x26;&#x26; file.contents &#x26;&#x26; file.path);
+        (file &amp;&amp; /function File\(/.test(file.constructor.toString()) &amp;&amp; file.contents &amp;&amp; file.path);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 /**
-* Wrapper for File.isVinyl to detect vinyl objects generated by gulp (vinyl &#x3c; v0.5.6)
+* Wrapper for File.isVinyl to detect vinyl objects generated by gulp (vinyl &lt; v0.5.6)
 * @param {*} file
 * @returns {string}
 */
 function isVinyl(file) {
    return File.<span class="apidocCodeKeywordSpan">isVinyl</span>(file) ||
        file instanceof File ||
-       (file &#x26;&#x26; /function File\(/.test(file.constructor.toString()) &#x26;&#x26; file.contents &#x26;&#x26; file.path);
+       (file &amp;&amp; /function File\(/.test(file.constructor.toString()) &amp;&amp; file.contents &amp;&amp; file.path);
 }
 
 /**
@@ -987,7 +980,7 @@ function isVinyl(file) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function replaceAssetPaths(html, opts) {
     // set dest path with fallback to html path
-    var destPath = opts.destFolder || (opts.dest &#x26;&#x26; path.dirname(opts.dest)) || path.dirname(html.path);
+    var destPath = opts.destFolder || (opts.dest &amp;&amp; path.dirname(opts.dest)) || path.dirname(html.path);
     var destPathResolved = path.resolve(destPath);
     var baseResolved = path.resolve(opts.base);
 
@@ -996,7 +989,7 @@ function isVinyl(file) {
      */
 </span>    return function (stylesheet) {
         // normalize relative paths
-        var css = stylesheet.contents.toString().replace(/url\([&#x27;&#x22;]?([^&#x27;&#x22;\\)]+)[&#x27;&#x22;]?\)/g, function (match, assetPath) {
+        var css = stylesheet.contents.toString().replace(/url\(['"]?([^'"\\)]+)['"]?\)/g, function (match, assetPath) {
             // skip absolute paths, urls and data-uris
             if (/^data:/.test(assetPath) || /(?:^\/)|(?::\/\/)/.test(assetPath)) {
                 return match;
@@ -1009,7 +1002,7 @@ function isVinyl(file) {
             // compute path prefix default relative to html
             var pathPrefixDefault = path.relative(destPathResolved, baseResolved);
 
-            var pathPrefix = (typeof opts.pathPrefix === &#x27;undefined&#x27;) ? pathPrefixDefault : opts.pathPrefix;
+            var pathPrefix = (typeof opts.pathPrefix === 'undefined') ? pathPrefixDefault : opts.pathPrefix;
 
             return normalizePath(match.replace(assetPath, path.join(pathPrefix, assetRelative)));
         });
@@ -1023,16 +1016,16 @@ function isVinyl(file) {
  */
 function processStylesheets(opts) {
 return function (htmlfile) {
-    debug(&#x27;processStylesheets&#x27;, htmlfile.stylesheets);
+    debug('processStylesheets', htmlfile.stylesheets);
     return Bluebird.map(htmlfile.stylesheets, vinylize(opts))
         .map(inlineImages(opts))
         .map(file.<span class="apidocCodeKeywordSpan">replaceAssetPaths</span>(htmlfile, opts))
         .reduce(function (total, stylesheet) {
-            return total + os.EOL + stylesheet.contents.toString(&#x27;utf8&#x27;);
-        }, &#x27;&#x27;)
+            return total + os.EOL + stylesheet.contents.toString('utf8');
+        }, '')
         .then(function (css) {
-            htmlfile.cssPath = tempfile(&#x27;.css&#x27;);
-            // add file to garbage collector so it get&#x27;s removed on exit
+            htmlfile.cssPath = tempfile('.css');
+            // add file to garbage collector so it get's removed on exit
             gc.addFile(htmlfile.cssPath);
 ...</pre></li>
     </ul>
@@ -1049,33 +1042,33 @@ return function (htmlfile) {
     <li>description and source-code<pre class="apidocCodePre">function resourcePath(htmlfile, opts) {
     return function (filepath) {
         if (isExternal(filepath)) {
-            debug(&#x27;resourcePath - remote&#x27;, filepath);
+            debug('resourcePath - remote', filepath);
             return filepath;
         }
 
         if (isExternal(htmlfile.history[0])) {
-            debug(&#x27;resourcePath - remote&#x27;, htmlfile.history[0]);
+            debug('resourcePath - remote', htmlfile.history[0]);
             return url.resolve(htmlfile.history[0], filepath);
         }
 
         if (/(?:^\/)/.test(filepath)) {
-            return path.join(opts.base, filepath.split(&#x27;?&#x27;)[0]);
+            return path.join(opts.base, filepath.split('?')[0]);
         }
         var folder = path.relative(opts.base, path.dirname(htmlfile.path));
         if (folder) {
-            debug(&#x27;resourcePath - folder&#x27;, folder);
+            debug('resourcePath - folder', folder);
         }
-        return path.join(path.dirname(htmlfile.path), filepath.split(&#x27;?&#x27;)[0]);
+        return path.join(path.dirname(htmlfile.path), filepath.split('?')[0]);
     };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-            htmlfile.stylesheets = typeof opts.css === &#x27;string&#x27; ? [opts.css] : opts.css;
+            htmlfile.stylesheets = typeof opts.css === 'string' ? [opts.css] : opts.css;
             return htmlfile;
         }
 
         // Oust extracts a list of your stylesheets
-        var stylesheets = oust(htmlfile.contents.toString(), &#x27;stylesheets&#x27;);
-        debug(&#x27;appendStylesheets&#x27;, stylesheets);
+        var stylesheets = oust(htmlfile.contents.toString(), 'stylesheets');
+        debug('appendStylesheets', stylesheets);
         stylesheets = stylesheets.map(file.<span class="apidocCodeKeywordSpan">resourcePath</span>(htmlfile, opts));
         return Bluebird.map(stylesheets, file.assertLocal(opts)).then(function (stylesheets) {
             htmlfile.stylesheets = stylesheets;
@@ -1106,11 +1099,11 @@ return function (htmlfile) {
     <li>example usage<pre class="apidocCodePre">...
             .map(file.replaceAssetPaths(htmlfile, opts))
             .reduce(function (total, stylesheet) {
-                return total + os.EOL + stylesheet.contents.toString(&#x27;utf8&#x27;);
-            }, &#x27;&#x27;)
+                return total + os.EOL + stylesheet.contents.toString('utf8');
+            }, '')
             .then(function (css) {
-                htmlfile.cssPath = tempfile(&#x27;.css&#x27;);
-                // add file to garbage collector so it get&#x27;s removed on exit
+                htmlfile.cssPath = tempfile('.css');
+                // add file to garbage collector so it get's removed on exit
                 gc.<span class="apidocCodeKeywordSpan">addFile</span>(htmlfile.cssPath);
 
                 return fs.writeFileAsync(htmlfile.cssPath, css).then(function () {
@@ -1196,7 +1189,7 @@ return function (htmlfile) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```js
-var critical = require(&#x27;critical&#x27;);
+var critical = require('critical');
 ```
 
 Full blown example with available options:
@@ -1209,7 +1202,7 @@ critical.<span class="apidocCodeKeywordSpan">generate</span>({
 inline: true,
 
 // Your base directory
-base: &#x27;dist/&#x27;,
+base: 'dist/',
 ...</pre></li>
     </ul>
 
@@ -1249,7 +1242,7 @@ base: &#x27;dist/&#x27;,
     cb = cb || function () {};
 
     if (!opts.src || !opts.base) {
-        throw new Error(&#x27;A valid source and base path are required.&#x27;);
+        throw new Error('A valid source and base path are required.');
     }
 
     // Inline the critical path CSS
@@ -1296,7 +1289,7 @@ base: &#x27;dist/&#x27;,
         }
 
         if (file.isStream()) {
-            return this.emit(&#x27;error&#x27;, new PluginError(&#x27;critical&#x27;, &#x27;Streaming not supported&#x27;));
+            return this.emit('error', new PluginError('critical', 'Streaming not supported'));
         }
 
         var options = _.assign(opts || {}, {
@@ -1305,12 +1298,12 @@ base: &#x27;dist/&#x27;,
 
         exports.generate(options, function (err, data) {
             if (err) {
-                return cb(new PluginError(&#x27;critical&#x27;, err.message));
+                return cb(new PluginError('critical', err.message));
             }
 
             // rename file if not inlined
             if (!opts.inline) {
-                file.path = replaceExtension(file.path, &#x27;.css&#x27;);
+                file.path = replaceExtension(file.path, '.css');
             }
 
             file.contents = new Buffer(data);
@@ -1400,19 +1393,19 @@ base: &#x27;dist/&#x27;,
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isVinyl = function (file) {
-  return (file &#x26;&#x26; file._isVinyl === true) || false;
+  return (file &amp;&amp; file._isVinyl === true) || false;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 /**
-* Wrapper for File.isVinyl to detect vinyl objects generated by gulp (vinyl &#x3c; v0.5.6)
+* Wrapper for File.isVinyl to detect vinyl objects generated by gulp (vinyl &lt; v0.5.6)
 * @param {*} file
 * @returns {string}
 */
 function isVinyl(file) {
    return File.<span class="apidocCodeKeywordSpan">isVinyl</span>(file) ||
        file instanceof File ||
-       (file &#x26;&#x26; /function File\(/.test(file.constructor.toString()) &#x26;&#x26; file.contents &#x26;&#x26; file.path);
+       (file &amp;&amp; /function File\(/.test(file.constructor.toString()) &amp;&amp; file.contents &amp;&amp; file.path);
 }
 
 /**
@@ -1438,7 +1431,7 @@ function isVinyl(file) {
     <li>description and source-code<pre class="apidocCodePre">clone = function (opt) {
   var self = this;
 
-  if (typeof opt === &#x27;boolean&#x27;) {
+  if (typeof opt === 'boolean') {
     opt = {
       deep: opt,
       contents: true,
@@ -1496,7 +1489,7 @@ function isVinyl(file) {
   var filePath = this.path ? this.relative : null;
 
   if (filePath) {
-    inspect.push(&#x27;&#x22;&#x27; + filePath + &#x27;&#x22;&#x27;);
+    inspect.push('"' + filePath + '"');
   }
 
   if (this.isBuffer()) {
@@ -1507,7 +1500,7 @@ function isVinyl(file) {
     inspect.push(inspectStream(this.contents));
   }
 
-  return &#x27;&#x3c;File &#x27; + inspect.join(&#x27; &#x27;) + &#x27;&#x3e;&#x27;;
+  return '&lt;File ' + inspect.join(' ') + '&gt;';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1541,7 +1534,7 @@ function isVinyl(file) {
     return false;
   }
 
-  if (this.stat &#x26;&#x26; typeof this.stat.isDirectory === &#x27;function&#x27;) {
+  if (this.stat &amp;&amp; typeof this.stat.isDirectory === 'function') {
     return this.stat.isDirectory();
   }
 
@@ -1575,7 +1568,7 @@ if (file.<span class="apidocCodeKeywordSpan">isNull</span>()) {
 }
 
 if (file.isStream()) {
-    return this.emit(&#x27;error&#x27;, new PluginError(&#x27;critical&#x27;, &#x27;Streaming not supported&#x27;));
+    return this.emit('error', new PluginError('critical', 'Streaming not supported'));
 }
 ...</pre></li>
     </ul>
@@ -1601,7 +1594,7 @@ if (file.isNull()) {
 }
 
 if (file.<span class="apidocCodeKeywordSpan">isStream</span>()) {
-    return this.emit(&#x27;error&#x27;, new PluginError(&#x27;critical&#x27;, &#x27;Streaming not supported&#x27;));
+    return this.emit('error', new PluginError('critical', 'Streaming not supported'));
 }
 
 var options = _.assign(opts || {}, {
@@ -1624,7 +1617,7 @@ var options = _.assign(opts || {}, {
     return false;
   }
 
-  if (this.stat &#x26;&#x26; typeof this.stat.isSymbolicLink === &#x27;function&#x27;) {
+  if (this.stat &amp;&amp; typeof this.stat.isSymbolicLink === 'function') {
     return this.stat.isSymbolicLink();
   }
 
@@ -1642,3 +1635,4 @@ var options = _.assign(opts || {}, {
     ]
 </div>
 </div>
+</body></html>
